@@ -10,3 +10,11 @@ spec:
         httpGet:
           path: /
           port: 8080
+        # tcpSocket:
+        #   port: 8080
+        # exec:
+        #   command:
+        #     - cat
+        #     - /tmp/healthy
+        initialDelaySeconds: 15
+        periodSeconds: 3
