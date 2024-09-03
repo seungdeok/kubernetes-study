@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-pod
+spec:
+  containers:
+    - name: test-container
+      image: busybox
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "while true; do echo 'Hello from hostPath' >> /data/test.txt; sleep 60; done",
+        ]
+      volumeMounts:
+        - name: host-volume
+          mountPath: /data
+  volumes:
+    - name: host-volume
+      hostPath:
+        path: /tmp/kubernetes-demo
+        type: DirectoryOrCreate
